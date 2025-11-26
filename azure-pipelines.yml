@@ -1,0 +1,247 @@
+trigger:
+  branches:
+    include:
+      - main
+pr: none
+pool:
+  name: Agentazure
+
+variables:
+  # -------- Project & Build Variables --------
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  dotnetVersion: '6.0.x'
+
+  # -------- IIS & Deployment Variables --------
+  detailingSolutionPath: 'Microservices/DetailingService/DetailingService.csproj'
+  detailingIISWebAppName: 'ODOS_DetailingService'
+  detailingDeploymentPath: 'C:\inetpub\wwwroot\ODOSMicroServices\DetailingService'
+  detailingTempDeployPath: 'D:\TempDeploy\DetailingService'
+
+  orderSolutionPath: 'Microservices/OrderService/OrderService.csproj'
+  orderIISWebAppName: 'ODOS_OrderService'
+  orderDeploymentPath: 'C:\inetpub\wwwroot\ODOSMicroServices\OrderService'
+  orderTempDeployPath: 'D:\TempDeploy\ODOS_OrderService'
+
+  wbsSolutionPath: 'Microservices/WBSService/WBSService.csproj'
+  wbsIISWebAppName: 'ODOS_WBSService'
+  wbsDeploymentPath: 'C:\inetpub\wwwroot\ODOSMicroServices\WBSMicroService'
+  wbsTempDeployPath: 'D:\TempDeploy\ODOS_WBSService'
+
+  drainSolutionPath: 'Microservices/DrainService/DrainService.csproj'
+  drainIISWebAppName: 'ODOS_DrainService'
+  drainDeploymentPath: 'C:\inetpub\wwwroot\ODOSMicroServices\DrainService'
+  drainTempDeployPath: 'D:\TempDeploy\ODOS_DrainService'
+
+  commonSolutionPath: 'Microservices/CommonServices/CommonServices.csproj'
+  commonIISWebAppName: 'ODOS_CommonService'
+  commonDeploymentPath: 'C:\inetpub\wwwroot\ODOSMicroServices\CommonMicroService'
+  commonTempDeployPath: 'D:\TempDeploy\ODOS_CommonService'
+
+  shapeCodeSolutionPath: 'Microservices/ShapeCodeService/ShapeCodeService.csproj'
+  shapeCodeIISWebAppName: 'ODOS_ShapeService'
+  shapeCodeDeploymentPath: 'C:\inetpub\wwwroot\ODOSMicroServices\ShapeMicroService'
+  shapeCodeTempDeployPath: 'D:\TempDeploy\ODOS_ShapeCodeService'
+
+steps:
+# Ensure we fetch at least two commits for change detection
+- checkout: self
+  fetchDepth: 2
+
+- task: UseDotNet@2
+  displayName: 'Use .NET SDK $(dotnetVersion)'
+  inputs:
+    version: '$(dotnetVersion)'
+
+# --- Check if DetailingService changed ---
+- powershell: |
+    if (-not (git rev-parse HEAD~1 2>$null)) {
+        Write-Host "Only one commit in history — treating DetailingService as changed."
+        Write-Host "##vso[task.setvariable variable=deployDetailing]true"
+        exit 0
+    }
+
+    $detailChanges = git diff --name-only HEAD HEAD~1 | Where-Object { $_ -like "Microservices/DetailingService/*" }
+    if (-not $detailChanges) {
+        Write-Host "##vso[task.setvariable variable=deployDetailing]false"
+        Write-Host "No changes in DetailingService — skipping build & deploy."
+    } else {
+        Write-Host "##vso[task.setvariable variable=deployDetailing]true"
+        Write-Host "Changes detected in DetailingService."
+    }
+  displayName: "Check if DetailingService has changes"
+
+# --- Check if OrderService changed ---
+- powershell: |
+    if (-not (git rev-parse HEAD~1 2>$null)) {
+        Write-Host "Only one commit in history — treating OrderService as changed."
+        Write-Host "##vso[task.setvariable variable=deployOrder]true"
+        exit 0
+    }
+
+    $orderChanges = git diff --name-only HEAD HEAD~1 | Where-Object { $_ -like "Microservices/OrderService/*" }
+    if (-not $orderChanges) {
+        Write-Host "##vso[task.setvariable variable=deployOrder]false"
+        Write-Host "No changes in OrderService — skipping build & deploy."
+    } else {
+        Write-Host "##vso[task.setvariable variable=deployOrder]true"
+        Write-Host "Changes detected in OrderService."
+    }
+  displayName: "Check if OrderService has changes"
+
+# --- Check if WBSService changed ---
+- powershell: |
+    if (-not (git rev-parse HEAD~1 2>$null)) {
+        Write-Host "Only one commit in history — treating WBSService as changed."
+        Write-Host "##vso[task.setvariable variable=deployWBS]true"
+        exit 0
+    }
+
+    $wbsChanges = git diff --name-only HEAD HEAD~1 | Where-Object { $_ -like "Microservices/WBSService/*" }
+    if (-not $wbsChanges) {
+        Write-Host "##vso[task.setvariable variable=deployWBS]false"
+        Write-Host "No changes in WBSService — skipping build & deploy."
+    } else {
+        Write-Host "##vso[task.setvariable variable=deployWBS]true"
+        Write-Host "Changes detected in WBSService."
+    }
+  displayName: "Check if WBSService has changes"
+
+# --- Check if DrainService changed ---
+- powershell: |
+    if (-not (git rev-parse HEAD~1 2>$null)) {
+        Write-Host "Only one commit in history — treating DrainService as changed."
+        Write-Host "##vso[task.setvariable variable=deployDrain]true"
+        exit 0
+    }
+
+    $drainChanges = git diff --name-only HEAD HEAD~1 | Where-Object { $_ -like "Microservices/DrainService/*" }
+    if (-not $drainChanges) {
+        Write-Host "##vso[task.setvariable variable=deployDrain]false"
+        Write-Host "No changes in DrainService — skipping build & deploy."
+    } else {
+        Write-Host "##vso[task.setvariable variable=deployDrain]true"
+        Write-Host "Changes detected in DrainService."
+    }
+  displayName: "Check if DrainService has changes"
+
+# --- Check if CommonService changed ---
+- powershell: |
+    if (-not (git rev-parse HEAD~1 2>$null)) {
+        Write-Host "Only one commit in history — treating CommonServices as changed."
+        Write-Host "##vso[task.setvariable variable=deployCommon]true"
+        exit 0
+    }
+
+    $commonChanges = git diff --name-only HEAD HEAD~1 | Where-Object { $_ -like "Microservices/CommonServices/*" }
+    if (-not $commonChanges) {
+        Write-Host "##vso[task.setvariable variable=deployCommon]false"
+        Write-Host "No changes in CommonServices — skipping build & deploy."
+    } else {
+        Write-Host "##vso[task.setvariable variable=deployCommon]true"
+        Write-Host "Changes detected in CommonServices."
+    }
+  displayName: "Check if CommonServices has changes"
+
+
+# --- Check if ShapeCodeService changed ---
+- powershell: |
+    if (-not (git rev-parse HEAD~1 2>$null)) {
+        Write-Host "Only one commit in history — treating ShapeCodeService as changed."
+        Write-Host "##vso[task.setvariable variable=deployShapeCode]true"
+        exit 0
+    }
+
+    $shapeCodeChanges = git diff --name-only HEAD HEAD~1 | Where-Object { $_ -like "Microservices/ShapeCodeService/*" }
+    if (-not $shapeCodeChanges) {
+        Write-Host "##vso[task.setvariable variable=deployShapeCode]false"
+        Write-Host "No changes in ShapeCodeService — skipping build & deploy."
+    } else {
+        Write-Host "##vso[task.setvariable variable=deployShapeCode]true"
+        Write-Host "Changes detected in ShapeCodeService."
+    }
+  displayName: "Check if ShapeCodeServices has changes"
+
+# --- Build & Deploy Script ---
+- powershell: |
+    function Build-Service($serviceName, $solutionPath, $outputPath) {
+        Write-Host "Cleaning temp deploy path for $serviceName..."
+        if (Test-Path $outputPath) { Remove-Item -Recurse -Force $outputPath }
+        New-Item -ItemType Directory -Path $outputPath | Out-Null
+
+        Write-Host "Publishing $serviceName..."
+        dotnet publish $solutionPath `
+          -c $(buildConfiguration) `
+          -o $outputPath `
+          --no-self-contained
+    }
+
+    function Backup-And-Deploy($serviceName, $appPoolName, $deployPath, $sourcePath, $backupFolderName) {
+        $systemFolder = if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") { "System32" } else { "sysnative" }
+        $appcmd = "C:\Windows\$systemFolder\inetsrv\appcmd.exe"
+
+        Write-Host "Stopping App Pool $appPoolName..."
+        & $appcmd stop apppool /apppool.name:"$appPoolName"
+
+        Write-Host "Backing up current deployment for $serviceName..."
+        $backupRoot = "D:\BackupAzureAPI"
+        if (!(Test-Path $backupRoot)) { New-Item -ItemType Directory -Path $backupRoot | Out-Null }
+        $customName = "${serviceName}_$($backupFolderName)_Backup_$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')"
+        $backupPath = Join-Path $backupRoot $customName
+        Copy-Item -Path $deployPath -Destination $backupPath -Recurse -Force
+
+        Get-ChildItem -Path $backupRoot -Directory |
+          Where-Object { $_.Name -like "${serviceName}_${backupFolderName}*" } |
+          Sort-Object CreationTime -Descending |
+          Select-Object -Skip 3 |
+          Remove-Item -Recurse -Force
+
+        Write-Host "Deploying $serviceName..."
+        robocopy $sourcePath $deployPath /MIR /NFL /NDL /NJH /NJS /NP
+
+        Write-Host "Starting App Pool $appPoolName..."
+        & $appcmd start apppool /apppool.name:"$appPoolName"
+    }
+
+    if ("$(deployDetailing)" -eq "true") {
+        Build-Service "DetailingService" "$(detailingSolutionPath)" "$(detailingTempDeployPath)"
+        Backup-And-Deploy "DetailingServiceBPC" "$(detailingIISWebAppName)" "$(detailingDeploymentPath)" "$(detailingTempDeployPath)" "DetailingServiceBPC"
+    } else {
+        Write-Host "Skipping DetailingService deployment."
+    }
+
+    if ("$(deployOrder)" -eq "true") {
+        Build-Service "OrderService" "$(orderSolutionPath)" "$(orderTempDeployPath)"
+        Backup-And-Deploy "OrderServiceBPC" "$(orderIISWebAppName)" "$(orderDeploymentPath)" "$(orderTempDeployPath)" "OrderServiceBPC"
+    } else {
+        Write-Host "Skipping OrderService deployment."
+    }
+
+    if ("$(deployWBS)" -eq "true") {
+        Build-Service "WBSService" "$(wbsSolutionPath)" "$(wbsTempDeployPath)"
+        Backup-And-Deploy "WBSMicroService" "$(wbsIISWebAppName)" "$(wbsDeploymentPath)" "$(wbsTempDeployPath)" "WBSMicroService"
+    } else {
+        Write-Host "Skipping WBSService deployment."
+    }
+
+    if ("$(deployDrain)" -eq "true") {
+        Build-Service "DrainService" "$(drainSolutionPath)" "$(drainTempDeployPath)"
+        Backup-And-Deploy "DrainService" "$(drainIISWebAppName)" "$(drainDeploymentPath)" "$(drainTempDeployPath)" "DrainService"
+    } else {
+        Write-Host "Skipping DrainService deployment."
+    }
+
+    if ("$(deployCommon)" -eq "true") {
+        Build-Service "CommonServices" "$(commonSolutionPath)" "$(commonTempDeployPath)"
+        Backup-And-Deploy "CommonServices" "$(commonIISWebAppName)" "$(commonDeploymentPath)" "$(commonTempDeployPath)" "CommonServices"
+    } else {
+        Write-Host "Skipping CommonServices deployment."
+    }
+
+    if ("$(deployShapeCode)" -eq "true") {
+        Build-Service "ShapeCodeService" "$(shapeCodeSolutionPath)" "$(shapeCodeTempDeployPath)"
+        Backup-And-Deploy "shapeCodeService" "$(shapeCodeIISWebAppName)" "$(shapeCodeDeploymentPath)" "$(shapeCodeTempDeployPath)" "ShapeCodeService"
+    } else {
+        Write-Host "Skipping ShapeCodeService deployment."
+    }
+  displayName: 'Build, Backup & Deploy (Only If Changed)'

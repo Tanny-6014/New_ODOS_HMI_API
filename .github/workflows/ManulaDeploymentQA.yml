@@ -1,0 +1,101 @@
+name: Deploy ODOS Microservices to Windows Server (Manual List)
+
+on:
+  workflow_dispatch:   # Manual trigger
+    inputs:
+      services_file:
+        description: 'Relative path to file containing list of services to deploy'
+        required: true
+        default: 'deploy.txt'
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, net]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Load services from file
+        id: detect
+        run: |
+          $services = Get-Content "${{ github.event.inputs.services_file }}" | Where-Object {$_ -and $_ -notmatch '^\s*#'}
+          $servicesList = $services -join ","
+          Write-Host "Deploying services: $servicesList"
+          echo "changed_services=$servicesList" >> $env:GITHUB_OUTPUT
+        shell: powershell
+
+      - name: Build & Publish listed services
+        if: steps.detect.outputs.changed_services != ''
+        run: |
+          $services = "${{ steps.detect.outputs.changed_services }}".Split(",")
+          foreach ($svc in $services) {
+            Write-Host "Building & Publishing: $svc"
+            dotnet restore "Microservices/$svc/$svc.csproj"
+            dotnet build "Microservices/$svc/$svc.csproj" --configuration Release --no-restore
+            dotnet publish "Microservices/$svc/$svc.csproj" -c Release -o "./publish/$svc"
+          }
+        shell: powershell
+
+      - name: Deploy to IIS (per service)
+        if: steps.detect.outputs.changed_services != ''
+        run: |
+          $services = "${{ steps.detect.outputs.changed_services }}".Split(",")
+          
+          # Same mapping as before
+          $serviceMap = @{
+            "AdminService"              = @{ iis = "ODOS_Admin";             path = "C:\inetpub\wwwroot\ODOSMicroServices\AdminService" }
+            "CABService"                = @{ iis = "ODOS_CAB";               path = "C:\inetpub\wwwroot\ODOSMicroServices\CABService" }
+            "CommonServices"            = @{ iis = "ODOS_CommonService";     path = "C:\inetpub\wwwroot\ODOSMicroServices\CommonMicroService" }
+            "DetailingService"          = @{ iis = "ODOS_DetailingService";  path = "C:\inetpub\wwwroot\ODOSMicroServices\DetailingService" }
+            "DrainService"              = @{ iis = "ODOS_DrainService";      path = "C:\inetpub\wwwroot\ODOSMicroServices\DrainService" }
+            "MasterDataService"         = @{ iis = "ODOS_MasterDataService"; path = "C:\inetpub\wwwroot\ODOSMicroServices\MasterDataService" }
+            "OrderService"              = @{ iis = "ODOS_OrderService";      path = "C:\inetpub\wwwroot\ODOSMicroServices\OrderService" }
+            "ParameterSetService"       = @{ iis = "ODOS_ParameterSetService"; path = "C:\inetpub\wwwroot\ODOSMicroServices\ParameterSetService" }
+            "ProductCodeMasterService"  = @{ iis = "ODOS_ProductCodeService"; path = "C:\inetpub\wwwroot\ODOSMicroServices\ProductCodeMicroService" }
+            "ShapeCodeService"          = @{ iis = "ODOS_ShapeService";      path = "C:\inetpub\wwwroot\ODOSMicroServices\ShapeMicroService" }
+            "UtilityService"            = @{ iis = "ODOS_UtilityService";    path = "C:\inetpub\wwwroot\ODOSMicroServices\UtilityService" }
+            "WBSService"                = @{ iis = "ODOS_WBSService";        path = "C:\inetpub\wwwroot\ODOSMicroServices\WBSMicroService" }
+          }
+
+          Import-Module WebAdministration
+
+          foreach ($svc in $services) {
+            if ($serviceMap.ContainsKey($svc)) {
+              $iisName = $serviceMap[$svc].iis
+              $destination = $serviceMap[$svc].path
+              $source = "${{ github.workspace }}\publish\$svc"
+              $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+              $backupRoot = "D:\IIS_Backups\ODOS_API_Backup\$iisName"
+              $backupFolder = Join-Path $backupRoot "$iisName-Backup_$timestamp"
+
+              Write-Host "`n======== Deploying: $svc ========"
+
+              # Stop IIS
+              if ((Get-WebAppPoolState -Name $iisName).Value -ne "Stopped") { Stop-WebAppPool -Name $iisName }
+              if ((Get-Website -Name $iisName).State -ne "Stopped") { Stop-Website -Name $iisName }
+              Start-Sleep -Seconds 5
+
+              # Backup existing
+              if (-not (Test-Path $backupRoot)) { New-Item -ItemType Directory -Path $backupRoot -Force | Out-Null }
+              New-Item -ItemType Directory -Path $backupFolder -Force | Out-Null
+              Copy-Item -Path "$destination\*" -Destination $backupFolder -Recurse -Force
+
+              # Copy new build
+              Copy-Item "$source\*" "$destination" -Recurse -Force
+
+              # Start IIS
+              Start-WebAppPool -Name $iisName
+              Start-Website -Name $iisName
+            } else {
+              Write-Host "⚠️ Service mapping not found for: $svc"
+            }
+          }
+        shell: powershell

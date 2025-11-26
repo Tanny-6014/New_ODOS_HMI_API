@@ -1,0 +1,24 @@
+{
+  "Routes": [
+
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "SwaggerKey": "ShapeCode",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "172.25.1.224",
+          "Port": "86"
+        }
+      ],
+      "UpstreamPathTemplate": "/ShapeService/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    }
+
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "SwaggerKey": "ParameterSetService",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5008"
+        }
+      ],
+      "UpstreamPathTemplate": "/ParameterSetService/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    }
+
+  ]
+}

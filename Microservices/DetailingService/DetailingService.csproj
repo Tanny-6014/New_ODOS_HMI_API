@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>7b4d8478-df43-473e-b161-19492b2b29f6</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="CouplerMaster.xml" />
+    <None Remove="LinearWeight.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CouplerMaster.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LinearWeight.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Dapper" Version="2.0.138" />
+    <PackageReference Include="FastMember" Version="1.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.5.23280.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.0-preview.5.23280.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.5.23280.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="XMLFolder\" />
+  </ItemGroup>
+
+<ItemGroup>
+  <Reference Include="ExpressionParser">
+    <HintPath>D:\SupportCode\ExpressionParser\ExpressionParser\bin\Debug\ExpressionParser.dll</HintPath>
+  </Reference>
+  <Reference Include="MathParserTK">
+    <HintPath>D:\SupportCode\MathParserTK.dll</HintPath>
+  </Reference>
+  <Reference Include="SharedCache.WinServiceCommon">
+    <HintPath>D:\SupportCode\NatSteel.Tacton.BLL\bin\Debug\SharedCache.WinServiceCommon.dll</HintPath>
+  </Reference>
+  <Reference Include="TCserver">
+    <HintPath>D:\SupportCode\NatSteel.Tacton.BLL\bin\Debug\TCserver.dll</HintPath>
+  </Reference>
+</ItemGroup>
+
+
+
+
+</Project>

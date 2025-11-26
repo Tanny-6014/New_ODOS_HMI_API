@@ -1,0 +1,129 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "odosapi",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "ODOD.GatewayAPI",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:89/swagger/v1/swagger.json"
+          //"Url": "https://localhost:5003/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Admin",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Admin API",
+          "Version": "1.0",
+          "Url": "https://localhost:5001/swagger/v1/swagger.json"
+
+        }
+      ]
+    },
+    {
+      "Key": "ShapeCode",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "ShapeCode API",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:86/swagger/v1/swagger.json"
+
+        }
+      ]
+    },
+    {
+      "Key": "CommonService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "CommonService API",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:88/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "WBSService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "WBSService API",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:91/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ProductCodeService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "ProductCodeService API",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:92/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ParameterSetService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "ParameterSetService API",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:93/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "OrderService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "OrderService API",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:97/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Detailing",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Detailing API",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:98/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "UtilityService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "UtilityService API",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:99/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "DrainService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "DrainService API",
+          "Version": "1.0",
+          "Url": "http://172.25.1.224:100/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}
+

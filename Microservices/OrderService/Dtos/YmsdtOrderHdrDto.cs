@@ -1,0 +1,81 @@
+﻿namespace OrderService.Dtos
+{
+    public class YmsdtOrderHdrDto
+    {
+            public string MANDT { get; set; }
+            public string ORDER_REQUEST_NO { get; set; }
+            public string PROJECT { get; set; }
+            public string CONTRACT { get; set; }
+            public string PO_NUMBER { get; set; }
+            public string CUST_ORDER_DATE { get; set; }
+            public string WBS1 { get; set; }
+            public string WBS2 { get; set; }
+            public string WBS3 { get; set; }
+            public string WBS4 { get; set; }
+            public string WBS5 { get; set; }
+            public string ORDER_TYPE { get; set; }
+            public string REQD_DEL_DATE { get; set; }
+            public string PRODUCT_TYPE { get; set; }
+            public string PRODUCT_MARKING { get; set; }
+            public string GROUP_MARKING { get; set; }
+            public string CONSIGNMENT { get; set; }
+            public string ST_ELEMENT_TYPE { get; set; }
+            public string BBS_NO { get; set; }
+            public string BBS_DESC { get; set; }
+            public string NDS_SALE_ORDER { get; set; }
+            public string SALES_ORDER { get; set; }
+            public string ERROR_CD { get; set; }
+            public string STATUS { get; set; }
+            public string INTER_ID { get; set; }
+            public string TIMESTAMP { get; set; }
+            public string PROC_TS { get; set; }
+            public string REC_TYPE { get; set; }
+            public string USERID { get; set; }
+            public string UDATE { get; set; }
+            public string UTIME { get; set; }
+            public string SALES_ORG { get; set; }
+            public string DISTR_CHAN { get; set; }
+            public string DIVISION { get; set; }
+            public string KUNNR { get; set; }
+            public string NAME_WE { get; set; }
+            public string KUNAG { get; set; }
+            public string NAME_AG { get; set; }
+            public string YORD_TYPE { get; set; }
+            public string YMAT_SOURCE { get; set; }
+            public string YCAB_TYPE { get; set; }
+            public string VEHICLE_TYPE { get; set; }
+            public string INT_REMARK { get; set; }
+            public string EXT_REMARK { get; set; }
+            public string NO_ITEM { get; set; }
+            public string PROCESS_STATUS { get; set; }
+            public string REF_ORD_REQ_NO { get; set; }
+            public string STATUS_DSS { get; set; }
+            public bool URG_ORD_IND { get; set; }
+            public bool PRM_SVC_IND { get; set; }
+            public bool CRN_BKD_IND { get; set; }
+            public bool BRG_BKD_IND { get; set; }
+            public bool POL_ESC_IND { get; set; }
+            public bool MTO_IND { get; set; }
+            public string REQ_DAT_FRM { get; set; }
+            public string REQ_DAT_TO { get; set; }
+            public string PRJ_CST_DAT { get; set; }
+            public bool ON_HOLD_IND { get; set; }
+            public bool ZERO_TOLERANCE_I { get; set; }
+            public bool CALL_BEF_DEL_IND { get; set; }
+            public bool CONQUAS_IND { get; set; }
+            public bool SPECIAL_PASS_IND { get; set; }
+            public bool DO_NOT_MIX_IND { get; set; }
+            public bool LORRY_CRANE_IND { get; set; }
+            public string CONTRACTUAL_LEAD { get; set; }
+            public string ORDER_GROUP_ID { get; set; }
+            public string PRECEDENT_SOR_NO { get; set; }
+            public string FIRST_PROMISED_D { get; set; }
+            public bool LOW_BED_VEH_IND { get; set; }
+            public bool TON50_VEH_IND { get; set; }
+            public bool UNIT_MODE_IND { get; set; }
+            public string MUST_HAVE_DAT { get; set; }
+            public string PLTYP { get; set; }
+            public string ORDER_CONF_IND { get; set; }
+
+    }
+}

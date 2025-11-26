@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Routes.Production\**" />
+    <Content Remove="Routes.Production\**" />
+    <EmbeddedResource Remove="Routes.Production\**" />
+    <None Remove="Routes.Production\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Routes\json.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Routes\ocelot.DrainService.api" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Routes\ocelot.CommonService.api.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.23" />
+    <PackageReference Include="MMLib.SwaggerForOcelot" Version="6.2.0" />
+    <PackageReference Include="Ocelot" Version="18.0.0" />
+    <PackageReference Include="Ocelot.Cache.CacheManager" Version="18.0.0" />
+    <PackageReference Include="Ocelot.Provider.Polly" Version="18.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties routes_4ocelot_1swaggerendpoints_1json__JsonSchema="https://appsemble.app/api.json" /></VisualStudio></ProjectExtensions>
+
+</Project>

@@ -1,0 +1,25 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "SwaggerKey": "DrainService",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5012"
+        }
+      ],
+      "UpstreamPathTemplate": "/DrainService/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    }
+
+  ]
+}
+
+

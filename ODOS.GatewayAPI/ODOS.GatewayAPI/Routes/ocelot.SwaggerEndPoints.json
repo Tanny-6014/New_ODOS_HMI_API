@@ -1,0 +1,132 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "odosapi",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "ODOD.GatewayAPI",
+          "Version": "1.0",
+        
+          "Url": "https://localhost:5003/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Admin",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Admin API",
+          "Version": "1.0",
+          "Url": "https://localhost:5001/swagger/v1/swagger.json"
+
+        }
+      ]
+    },
+    {
+      "Key": "Detailing",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Detailing API",
+          "Version": "1.0",
+          "Url": "https://localhost:5002/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ShapeCode",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "ShapeCode API",
+          "Version": "1.0",
+          "Url": "https://localhost:5004/swagger/v1/swagger.json"
+
+        }
+      ]
+    },
+    {
+      "Key": "CommonService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "CommonService API",
+          "Version": "1.0",
+          "Url": "https://localhost:5005/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "WBSService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "WBSService API",
+          "Version": "1.0",
+          "Url": "https://localhost:5006/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ProductCodeService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "ProductCodeService API",
+          "Version": "1.0",
+          "Url": "https://localhost:5007/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ParameterSetService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "ParameterSetService API",
+          "Version": "1.0",
+          "Url": "https://localhost:5008/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "OrderService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "OrderService API",
+          "Version": "1.0",
+          "Url": "https://localhost:5009/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "UtilityService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "UtilityService API",
+          "Version": "1.0",
+          "Url": "https://localhost:5010/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "DrainService",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "DrainService API",
+          "Version": "1.0",
+          "Url": "https://localhost:5012/swagger/v1/swagger.json"
+        }
+      ]
+    }
+    
+
+    
+  ]
+}
+
