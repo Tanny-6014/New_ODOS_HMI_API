@@ -3,11 +3,11 @@ name: Deploy ODOS Microservices to Windows Server
 on:
   push:
     branches:
-      - abc
+      - main
 
 jobs:
   deploy:
-    runs-on: [self-hosted, net]
+    runs-on: [self-hosted, SAPHMIAPI]
 
     steps:
       - name: Checkout code
