@@ -410,7 +410,7 @@ namespace ParameterSetService.Controllers
 
 
         [HttpGet]
-        [Route("/Get_TransportMode")]
+        [Route("/Get_TransportMode_Test")]
         public async Task<IActionResult> GetTransportMode()
         {
             try
