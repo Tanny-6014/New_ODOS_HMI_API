@@ -32,7 +32,7 @@ namespace OrderService.Repositories
         private readonly IConfiguration _configuration;
         private string connectionString;
         // private string strIDB_Connection = "Data Source=(DESCRIPTION = (ENABLE=BROKEN)(ADDRESS = (COMMUNITY = IDBPROD)(PROTOCOL = TCP)(HOST = nsprdscmlsnr.natsteel.corp)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = IDBPROD)));Persist Security Info=True;User ID=SCM_ADMIN;Password=scm4admin; Connection Timeout=300";
-        // private string connectionStringPROD= "Server=nsprddb10;Database=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS; TrustServerCertificate=True;MultipleActiveResultSets=true";
+        // private string connectionStringPROD= "Server=NSPRDDB19\\MSSQL2022;Database=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS; TrustServerCertificate=True;MultipleActiveResultSets=true";
          public InterfaceRepository(IDbContextFactory<OrderContext> contextFactory, IConfiguration configuration, IHttpClientFactory httpClientFactory)
         {
             _contextFactory = contextFactory;

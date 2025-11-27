@@ -412,7 +412,7 @@ namespace DetailingService.Controllers
                     objCab.ShapeParametersList.Add(shapeParamObj);
                 }
 
-                cnNDS.ConnectionString = "Server=nsprddb10\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS;Connection Timeout=120";
+                cnNDS.ConnectionString = "Server=NSPRDDB19\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS;Connection Timeout=120";
 
 
         //Added by ajit

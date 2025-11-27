@@ -25,7 +25,7 @@ namespace ShapeCodeService.Repositories
             _dbContext = dbContext;
             _configuration = configuration;
             connectionString = _configuration.GetConnectionString(SystemConstants.DefaultDBConnection);
-            // connectionString = "Server=NSQADB5\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=MES_USER;Password=Mes@123";
+            // connectionString = "Server=NSPRDDB19\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS";
 
         }   
 

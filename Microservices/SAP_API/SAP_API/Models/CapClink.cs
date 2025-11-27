@@ -12,7 +12,7 @@ namespace SAP_API.Modelss
 {
     public class CapClink
     {
-        private string connectionString = "Server=NSQADB5\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=NDS4DBAdmin*;Connection Timeout=36000000";
+        private string connectionString = "Server=NSPRDDB19\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS;Connection Timeout=36000000";
 
 
 

@@ -13,7 +13,7 @@ namespace WBSService.Repositories
 {
     public class ShapeCode
     {
-        private string connectionString = "Server=NSQADB5\\MSSQL2022.natsteel.corp;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=MES_USER;Password=Mes@123";
+        private string connectionString = "Server=NSPRDDB19\\MSSQL2022.natsteel.corp;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS";
 
         #region Variables
 

@@ -11,7 +11,7 @@ namespace SAP_API.Modelss
 {
     public class Contract
     {
-        private string connectionString = "Server=NSQADB5\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=NDS4DBAdmin*";
+        private string connectionString = "Server=NSPRDDB19\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS";
 
         public int ContractId { get; set; }
         public string ContractName { get; set; }

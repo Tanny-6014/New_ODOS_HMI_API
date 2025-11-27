@@ -15,8 +15,8 @@ namespace DetailingService.Repositories
     {
         private DetailingApplicationContext _dbContext;
         private readonly IConfiguration _configuration;
-        private string connectionString = "Server=NSQADB5\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=MES_USER;Password=Mes@123;Connection Timeout=3600";
-    //private string connectionString = "Server=nsprddb10\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS;Connection Timeout=36000000";
+        private string connectionString = "Server=NSPRDDB19\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS;Connection Timeout=3600";
+    //private string connectionString = "Server=NSPRDDB19\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS;Connection Timeout=36000000";
 
         public SlabDetailingComponent()
         {
@@ -1440,7 +1440,7 @@ namespace DetailingService.Repositories
         public Dictionary<string, string> GetDrainProductMarkingFormulae(string strElement, string shapecode, string layername)
         {
            
-            // dbManager.ConnectionString = "Data Source=NSQADB5\\MSSQL2022;Initial Catalog=NDSPRD;UID=ndswebapps;Password=NDS4DBAdmin*;Persist Security Info=True;";
+            // dbManager.ConnectionString = "Data Source=NSPRDDB19\\MSSQL2022;Initial Catalog=NDSPRD;UID=ndswebapps;Password=DBAdmin4*NDS;Persist Security Info=True;";
             DataSet dsDrainProductMark = new DataSet();
             Dictionary<string, string> result_set = new Dictionary<string, string>();
             var comparer = StringComparer.OrdinalIgnoreCase;
