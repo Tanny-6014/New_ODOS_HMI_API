@@ -60,16 +60,17 @@ namespace TokenHandler.Controllers
 
             //if (lServername == "")
             //{
-            lServername = "https://ODOSSAP.natsteel.com.sg";
+            //lServername = "https://ODOSSAP.natsteel.com.sg";
             // }
 
-            if (lServername.Length > 27)
-            {
-                lServername = lServername.Substring(0, 27);
-            }
+            //if (lServername.Length > 27)
+            //{
+            //    lServername = lServername.Substring(0, 27);
+            //}
 
-            if (lToken == null || lToken == "" || (lServername != "https://ump.natsteel.com.sg" && lServername != "https://devniceump.natsteel"))
-            {
+            //if (lToken == null || lToken == "" || (lServername != "https://ODOSSAP.natsteel.com.sg"))
+            if (lToken == null || lToken == "")
+                {
                 //return Redirect(lSSOUrl);
                 return BadRequest("UnAuthorize");
 
