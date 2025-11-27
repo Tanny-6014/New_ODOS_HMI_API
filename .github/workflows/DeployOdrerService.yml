@@ -3,7 +3,7 @@ name: Deploy ODOS Microservices to Windows Server
 on:
   push:
     branches:
-      - main
+      - abc
 
 jobs:
   deploy:
