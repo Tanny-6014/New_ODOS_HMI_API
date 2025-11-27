@@ -15,7 +15,7 @@ namespace SAP_API.Models
         private readonly IConfiguration _configuration;
         //  private string connectionString;
 
-        private string connectionString = "Server=NSQADB5\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=NDS4DBAdmin*";
+        private string connectionString = "Server=NSPRDDB19\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS";
 
         #region "Properties"
         public int ProductCodeId { get; set; }

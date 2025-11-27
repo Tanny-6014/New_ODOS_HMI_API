@@ -10,7 +10,7 @@ namespace OrderService.Models
     public class DBContextModels : DbContext
     {
         public DBContextModels()
-            : base("Server=NSQADB5\\MSSQL2022,1433;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=MES_USER;Password=Mes@123")
+            : base("Server=NSPRDDB19\\MSSQL2022,1433;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS")
         {
         }
         public DBContextModels Create()

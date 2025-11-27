@@ -11,9 +11,9 @@ namespace DetailingService.Repositories
 {
     public class CarpetSplitLog
     {
-        private string connectionstring = "server=nsprddb10\\mssql2022;database=odos;trustservercertificate=true;multipleactiveresultsets=true;user=ndswebapps;password=dbadmin4*nds;connection timeout=36000000";
+        private string connectionstring = "server=NSPRDDB19\\MSSQL2022;database=odos;trustservercertificate=true;multipleactiveresultsets=true;user=ndswebapps;password=dbadmin4*nds;connection timeout=36000000";
 
-        //private string connectionString = "Server=NSQADB5\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=MES_USER;Password=Mes@123;Connection Timeout=36000000";
+        //private string connectionString = "Server=NSPRDDB19\\MSSQL2022;Database=ODOS;TrustServerCertificate=True;MultipleActiveResultSets=true;User=ndswebapps;Password=DBAdmin4*NDS;Connection Timeout=36000000";
 
 
         public static void LogCarpetLogic(string sedetailingId, string structureMarkName, string CarpetLogicLog, string strUserName)    //

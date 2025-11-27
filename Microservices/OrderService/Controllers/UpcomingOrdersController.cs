@@ -588,7 +588,7 @@ namespace OrderService.Controllers
         {
             if (strServer == "PRD")
             {
-                strNDS_Connection = "Data Source=nsprddb10\\MSSQL2022;Initial Catalog=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS; MultipleActiveResultSets=false; Connection Timeout=120";
+                strNDS_Connection = "Data Source=NSPRDDB19\\MSSQL2022;Initial Catalog=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS; MultipleActiveResultSets=false; Connection Timeout=120";
                 strCIS_Connection = "Data Source=(DESCRIPTION = (ADDRESS = (COMMUNITY = SAP.WORLD)(PROTOCOL = TCP)(HOST = 172.25.101.1)(PORT = 1527)) (CONNECT_DATA = (SID = NSP) (SERVER = DEDICATED) (SERVICE_NAME = NSP)));Persist Security Info=True;User ID=ORAINTSAP;Password=ORAintsap01;Connect Timeout=300";
                 strIDB_Connection = "Data Source=(DESCRIPTION = (ENABLE=BROKEN)(ADDRESS = (COMMUNITY = IDBPROD)(PROTOCOL = TCP)(HOST = nsprdscmlsnr.natsteel.corp)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = IDBPROD)));Persist Security Info=True;User ID=SCM_ADMIN;Password=scm4admin; Connection Timeout=300";
                 strSTS_Connection = "Data Source=NSDB11,1433;Initial Catalog=STS;User ID=stsapp; Password=stsapp123; Connection Timeout=120";
@@ -597,9 +597,9 @@ namespace OrderService.Controllers
 
                 //strCIS_Connection = "Data Source=(DESCRIPTION = (ADDRESS = (COMMUNITY = SAP.WORLD)(PROTOCOL = TCP)(HOST = 10.168.101.177)(PORT = 1527)) (CONNECT_DATA = (SID = NSP) (SERVER = DEDICATED) (SERVICE_NAME = NSP)));Persist Security Info=True;User ID=ORAINTSAP;Password=ORAintsap01;";
                 //strCIS_Connection = "Data Source=(DESCRIPTION = (ADDRESS = (COMMUNITY = SAP.WORLD)(PROTOCOL = TCP)(HOST = 172.25.101.1)(PORT = 1527)) (CONNECT_DATA = (SID = NSP) (SERVER = DEDICATED) (SERVICE_NAME = NSP)));Persist Security Info=True;User ID=ORAINTSAP;Password=ORAintsap01;Connect Timeout=300";
-                //strNDS_Connection = "Provider=sqloledb; Data Source=nsprddb10\\MSSQL2022;Initial Catalog=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS";
-                //strNDS_Connection = "Provider=sqloledb; Data Source=nsprddb10\\MSSQL2022;Initial Catalog=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS";
-                //strNDS_Connection = "Data Source=nsprddb10\\MSSQL2022;Initial Catalog=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS; MultipleActiveResultSets=false; Connection Timeout=120";
+                //strNDS_Connection = "Provider=sqloledb; Data Source=NSPRDDB19\\MSSQL2022;Initial Catalog=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS";
+                //strNDS_Connection = "Provider=sqloledb; Data Source=NSPRDDB19\\MSSQL2022;Initial Catalog=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS";
+                //strNDS_Connection = "Data Source=NSPRDDB19\\MSSQL2022;Initial Catalog=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS; MultipleActiveResultSets=false; Connection Timeout=120";
                 //strIDB_Connection = "Data Source=(DESCRIPTION = (ADDRESS = (COMMUNITY = IDBPROD)(PROTOCOL = TCP)(HOST = nsprdscmlsnr.natsteel.corp)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = IDBPROD)));Persist Security Info=True;User ID=SCM_ADMIN;Password=scm4admin;";
                 //strIDB_Connection = "Data Source=(DESCRIPTION = (ADDRESS = (COMMUNITY = IDBPROD)(PROTOCOL = TCP)(HOST = nsprdscmvdb01)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = IDBPROD)));Persist Security Info=True;User ID=SCM_ADMIN;Password=scm4admin; Connection Timeout=300";
                 //strIDB_Connection = "Data Source=(DESCRIPTION = (ENABLE=BROKEN)(ADDRESS = (COMMUNITY = IDBPROD)(PROTOCOL = TCP)(HOST = nsprdscmlsnr.natsteel.corp)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = IDBPROD)));Persist Security Info=True;User ID=SCM_ADMIN;Password=scm4admin; Connection Timeout=300";
@@ -618,8 +618,8 @@ namespace OrderService.Controllers
                 //Server
                 //strCIS_Connection = "Data Source=(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (COMMUNITY = SAP.WORLD)(PROTOCOL = TCP)(HOST = 172.26.0.15)(PORT = 1527)))(CONNECT_DATA = (SID = NSQ)(GLOBAL_NAME = NSQ.WORLD)));Persist Security Info=True;User ID=Sapsr3;Password=krishna123;Connection Timeout=300";
                 //strNDS_Connection = "Provider=sqloledb; Data Source=NSQADB4\\SQL2005_1;Initial Catalog=NDSPRD;User ID=ots_support; Password=ots1nqa";
-                //strNDS_Connection = "Provider=sqloledb; Data Source=NSQADB5,1433;Initial Catalog=NDSPRD;User ID=ots_support; Password=ots1nqa";
-                strNDS_Connection = "Data Source=NSQADB5\\MSSQL2022; Initial Catalog=ODOS;User ID=MES_USER; Password=Mes@123;MultipleActiveResultSets=false; Connection Timeout=120";
+                //strNDS_Connection = "Provider=sqloledb; Data Source=NSPRDDB19\\MSSQL2022;Initial Catalog=NDSPRD;User ID=ots_support; Password=ots1nqa";
+                strNDS_Connection = "Data Source=NSPRDDB19\\MSSQL2022; Initial Catalog=ODOS;User ID=ndswebapps; Password=DBAdmin4*NDS;MultipleActiveResultSets=false; Connection Timeout=120";
                 //strIDB_Connection = "Data Source=(DESCRIPTION = (ADDRESS = (COMMUNITY = SCMIDBQA)(PROTOCOL = TCP)(HOST = 172.18.1.134)(PORT = 1525)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = SCMIDBQA)));Persist Security Info=True;User ID=SCM_ADMIN;Password=scm4admin;Connection Timeout=300";
                 strIDB_Connection = "Data Source=(DESCRIPTION = (ADDRESS = (COMMUNITY = SCMIDBQA)(PROTOCOL = TCP)(HOST = NSQADB18.natsteel.corp)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = SCMIDBQA)));Persist Security Info=True;User ID=SCM_ADMIN;Password=scm4admin;Connection Timeout=300";
                 strSTS_Connection = "Data Source=NSQADB2,1433;Initial Catalog=STS;User ID=stsapp; Password=stsapp123";
