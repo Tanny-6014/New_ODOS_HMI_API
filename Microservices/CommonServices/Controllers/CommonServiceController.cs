@@ -65,7 +65,7 @@ namespace ShapeCodeService.Controllers
         }
 
         [HttpGet]
-        [Route("/GetContractListAsync/{projectId}")]
+        [Route("/GetContractListAsyncNew_Tanmay/{projectId}")]
         public async Task<IActionResult> GetContractListAsync(int projectId)
         {
             IEnumerable<ContractDto> ContractList = await _CommonServiceRepository.GetContractListAsync(projectId);
