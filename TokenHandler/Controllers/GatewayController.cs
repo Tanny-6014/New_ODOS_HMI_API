@@ -33,7 +33,7 @@ namespace TokenHandler.Controllers
         [Route("/IndexUMP")]
         public IActionResult IndexUMP()
         {
-            var lSSOUrl = "https://devniceump.natsteel.com.sg";
+            var lSSOUrl = "https://ODOSSAP.natsteel.com.sg";
 
            
             string lToken = Request.Form["token"];// HttpContext.Request.Form["token"];
@@ -60,7 +60,7 @@ namespace TokenHandler.Controllers
 
             //if (lServername == "")
             //{
-            lServername = "https://devniceump.natsteel.com.sg";
+            lServername = "https://ODOSSAP.natsteel.com.sg";
             // }
 
             if (lServername.Length > 27)
@@ -85,7 +85,7 @@ namespace TokenHandler.Controllers
             {
                 ClockSkew = TimeSpan.FromMinutes(1),
                 ValidIssuer = "ump.natsteel.com.sg",
-                ValidAudience = "ODOS.Natsteel.com.sg",
+                ValidAudience = "ODOSSAP.natsteel.com.sg",
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ODOS.Natsteel.com.sg@89273829NatSteel"))
             };
 
