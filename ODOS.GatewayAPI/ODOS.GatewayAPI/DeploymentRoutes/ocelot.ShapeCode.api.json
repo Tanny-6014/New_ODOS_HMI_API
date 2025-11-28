@@ -7,7 +7,7 @@
       "SwaggerKey": "ShapeCode",
       "DownstreamHostAndPorts": [
         {
-          "Host": "172.25.1.141",
+          "Host": "172.25.0.4",
           "Port": "86"
         }
       ],

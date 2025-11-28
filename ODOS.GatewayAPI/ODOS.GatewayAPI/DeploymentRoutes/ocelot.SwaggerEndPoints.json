@@ -7,7 +7,7 @@
         {
           "Name": "ODOD.GatewayAPI",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:89/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:89/swagger/v1/swagger.json"
           //"Url": "https://localhost:5003/swagger/v1/swagger.json"
         }
       ]
@@ -31,7 +31,7 @@
         {
           "Name": "ShapeCode API",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:86/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:86/swagger/v1/swagger.json"
 
         }
       ]
@@ -43,7 +43,7 @@
         {
           "Name": "CommonService API",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:88/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:88/swagger/v1/swagger.json"
         }
       ]
     },
@@ -54,7 +54,7 @@
         {
           "Name": "WBSService API",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:91/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:91/swagger/v1/swagger.json"
         }
       ]
     },
@@ -65,7 +65,7 @@
         {
           "Name": "ProductCodeService API",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:92/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:92/swagger/v1/swagger.json"
         }
       ]
     },
@@ -76,7 +76,7 @@
         {
           "Name": "ParameterSetService API",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:93/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:93/swagger/v1/swagger.json"
         }
       ]
     },
@@ -87,7 +87,7 @@
         {
           "Name": "OrderService API",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:97/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:97/swagger/v1/swagger.json"
         }
       ]
     },
@@ -98,7 +98,7 @@
         {
           "Name": "Detailing API",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:98/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:98/swagger/v1/swagger.json"
         }
       ]
     },
@@ -109,7 +109,7 @@
         {
           "Name": "UtilityService API",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:99/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:99/swagger/v1/swagger.json"
         }
       ]
     },
@@ -120,7 +120,7 @@
         {
           "Name": "DrainService API",
           "Version": "1.0",
-          "Url": "http://172.25.1.141:100/swagger/v1/swagger.json"
+          "Url": "http://172.25.0.4:100/swagger/v1/swagger.json"
         }
       ]
     }
